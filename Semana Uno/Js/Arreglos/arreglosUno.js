@@ -56,3 +56,4 @@ console.log(indice);
 const indiceDos = datosDos.findIndex(d => {
     return d.id === 3;
 })
+console.log(indiceDos);
