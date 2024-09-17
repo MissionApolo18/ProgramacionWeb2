@@ -27,9 +27,9 @@ body {
 }
 
 .menu-image {
-    width: 150px;
+    width: 80%;
     height: 150px;
-    margin: 0 10px;
+    margin: 20px auto;
     cursor: pointer;
     transition: transform 0.3s;
 }
@@ -54,5 +54,25 @@ body {
 
 #phrase {
     font-size: 2em;
-    color: #c244d8;
+    color: #bc52cf;
+}
+
+@keyframes in-circle-swoop {
+    from {
+        clip-path: var(--circle-top-right-out);
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        clip-path: var(--circle-bottom-right-in);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+[transition-style="in:custom:circle-swoop"] {
+    --transition__duration: 2.5s;
+    animation-name: in-circle-swoop;
+    animation-duration: var(--transition__duration);
 }

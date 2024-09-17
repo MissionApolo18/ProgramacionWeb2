@@ -8,4 +8,10 @@ function showPhrase(imageNumber) {
     };
 
     document.getElementById('phrase').textContent = phrases[imageNumber];
+
+    const phraseContainer = document.getElementById('phrase-container');
+    phraseContainer.removeAttribute('transition-style'); // Eliminar animación previa
+    setTimeout(() => {
+        phraseContainer.setAttribute('transition-style', 'in:custom:circle-swoop');
+    }, 10);
 }
