@@ -1,0 +1,68 @@
+/* Estilo general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #EACDF6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Estilo del contenedor del formulario */
+.form-container {
+    max-width: 400px auto;
+    width: 60%;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #C692DD;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del título del formulario */
+.form-container h2 {
+    margin-top: 0;
+    color: #5C0D68;
+}
+
+/* Estilo de los grupos de campos del formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Estilo de las etiquetas de los campos del formulario */
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #5C0D68;
+}
+
+/* Estilo de los campos de entrada del formulario */
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 1px solid #9458A1;
+}
+
+/* Estilo del botón */
+button {
+    width: 100%;
+    background-color: #9458A1;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #5C0D68;
+}
