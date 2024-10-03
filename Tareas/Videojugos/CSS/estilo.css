@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EACDF6;
+    color: #5C0D68;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #9458A1;
+}
+
+h2 {
+    color: #A66FB9;
+}
+
+.selection-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.platform-content {
+    background-color: #C692DD;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    background-color: #A66FB9;
+    border-radius: 10px;
+    padding: 15px;
+    width: 30%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.card input {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-sizing: border-box; /* Esta madre es la que hace que no se salga del card*/
+    /*border: none;*/
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+
+button {
+    background-color: #5C0D68;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #9458A1;
+}
+
+/* Estilo general del select */
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #9458A1; /* color del borde */
+    background-color: #EACDF6; /* color del fondo */
+    color: #5C0D68; /* color del texto */
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none; /* Para eliminar el estilo predeterminado de algunos navegadores */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Estilo para la flecha de la lista desplegable */
+select::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    pointer-events: none;
+    color: #5C0D68;
+}
+
+/* Estilo para cada opción dentro del select */
+select option {
+    background-color: #C692DD;
+    color: #5C0D68;
+    padding: 10px;
+}
+
+/* Efecto al pasar el cursor */
+select:hover {
+    background-color: #A66FB9;
+}

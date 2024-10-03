@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Videojuegos</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+</head>
+<body>
+    <h1>Tienda de Videojuegos - Registro de Ventas</h1>
+
+    <div class="selection-container">
+        <label for="platform">Seleccionar Plataforma:</label>
+        <select id="platform" onchange="showPlatformContent()">
+            <option value="xbox">Xbox</option>
+            <option value="psp">PSP</option>
+            <option value="nintendo">Nintendo</option>
+        </select>
+    </div>
+
+    <!-- Secciones de tarjetas para cada plataforma -->
+    <!-- Xbox Section -->
+<div id="xbox-content" class="platform-content">
+    <h2>Ventas para Xbox</h2>
+    <div class="card-container">
+        <div class="card">
+            <img src="Recursos/halo.jpg" alt="Halo">
+            <h3>Halo</h3>
+            <input type="number" placeholder="Cantidad Vendida" min="1">
+            <button>Registrar Venta</button>
+        </div>
+        <div class="card">
+            <img src="Recursos/forza.jpg" alt="Forza Horizon">
+            <h3>Forza Horizon</h3>
+            <input type="number" placeholder="Cantidad Vendida" min="1">
+            <button>Registrar Venta</button>
+        </div>
+        <div class="card">
+            <img src="Recursos/gears.jpg" alt="Gears of War">
+            <h3>Gears of War</h3>
+            <input type="number" placeholder="Cantidad Vendida" min="1">
+            <button>Registrar Venta</button>
+        </div>
+        <div class="card">
+            <img src="Recursos/fifa.jpg" alt="FIFA 2024">
+            <h3>FIFA 2024</h3>
+            <input type="number" placeholder="Cantidad Vendida" min="1">
+            <button>Registrar Venta</button>
+        </div>
+        <div class="card">
+            <img src="Recursos/cod.jpg" alt="Call of Duty">
+            <h3>Call of Duty</h3>
+            <input type="number" placeholder="Cantidad Vendida" min="1">
+            <button>Registrar Venta</button>
+        </div>
+    </div>
+</div>
+
+
+    <div id="psp-content" class="platform-content" style="display: none;">
+        <h2>Ventas para PSP</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="GOW">
+                <h3>God of War</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="Tekken">
+                <h3>Tekken</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="FIFA2024">
+                <h3>FIFA 2024</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="GTA">
+                <h3>GTA: Liberty City</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="Assassin's">
+                <h3>Assassin's Creed</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="nintendo-content" class="platform-content" style="display: none;">
+        <h2>Ventas para Nintendo</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="MarioKart">
+                <h3>Mario Kart</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="Zelda">
+                <h3>Zelda: Breath of the Wild</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="Animal Crossing">
+                <h3>Animal Crossing</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="SSB">
+                <h3>Super Smash Bros</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+            <div class="card">
+                <img src="Recursos/cod.jpg" alt="Splatoon">
+                <h3>Splatoon</h3>
+                <input type="number" placeholder="Cantidad Vendida" min="1">
+                <button>Registrar Venta</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/script.js"></script>
+</body>
+</html>
