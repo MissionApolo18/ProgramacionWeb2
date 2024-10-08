@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#main-title {
+    font-style: Fragment Core;
+    font-size: 3em;
+    color: #F22E2E;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.menu-image {
+    width: 80%;
+    height: 150px;
+    margin: 20px auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.menu-image:hover {
+    transform: scale(1.1);
+}
+
+#phrase-container {
+    text-align: center;
+    background-color: #242424;
+    /* Un gris oscuro */
+    padding: 20px;
+    border-radius: 10px;
+    /* Bordes redondeados */
+    width: 80%;
+    /* Ajusta el ancho del contenedor */
+    margin: 20px auto;
+    /* Centra el contenedor horizontalmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#phrase {
+    font-size: 2em;
+    color: #bc52cf;
+}
+
+@keyframes in-circle-swoop {
+    from {
+        clip-path: var(--circle-top-right-out);
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        clip-path: var(--circle-bottom-right-in);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+[transition-style="in:custom:circle-swoop"] {
+    --transition__duration: 2.5s;
+    animation-name: in-circle-swoop;
+    animation-duration: var(--transition__duration);
+}
