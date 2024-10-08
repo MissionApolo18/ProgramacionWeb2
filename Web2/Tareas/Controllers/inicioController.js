@@ -1,6 +1,3 @@
-const inicio = (req,res) => {
-    res.render('inicio')
-}
-export {
-    inicio
+exports.mostrarInicio = (req, res) => {
+    res.render('inicio'); // Asegúrate que este sea correcto
 }

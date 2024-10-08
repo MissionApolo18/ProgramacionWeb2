@@ -5,14 +5,14 @@ html(lang="es")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Menú de Imágenes
     link(rel="stylesheet", href="Tareas/Public/CSS/estilos.css")
-  body(style="background-image: url('Tareas/Public/Recursos/fondo.jpg');")
+  body(style="background-image: url('./Public/Recursos/fondo.jpg');")
     h1#main-title My Villain Academia
     .menu-container
-      img(src="Tareas/Public/Recursos/toga Himiko.png" alt="Imagen 1" class="menu-image" onclick="showPhrase(1)")
-      img(src="Tareas/Public/Recursos/Dabi.png" alt="Imagen 2" class="menu-image" onclick="showPhrase(2)")
-      img(src="Tareas/Public/Recursos/Tomura_shigaraki.png" alt="Imagen 3" class="menu-image" onclick="showPhrase(3)")
-      img(src="Tareas/Public/Recursos/Chisaki-Kai.png" alt="Imagen 4" class="menu-image" onclick="showPhrase(4)")
-      img(src="Tareas/Public/Recursos/Stain.png" alt="Imagen 5" class="menu-image" onclick="showPhrase(5)")
+      img(src="Tareas/Public/Recursos/togaHimiko.png" alt="Imagen 1" class="menu-image" onclick="showPhrase(1)")
+      img(src="./Public/Recursos/Dabi.png" alt="Imagen 2" class="menu-image" onclick="showPhrase(2)")
+      img(src="./Public/Recursos/Tomura_shigaraki.png" alt="Imagen 3" class="menu-image" onclick="showPhrase(3)")
+      img(src="./Public/Recursos/Chisaki-Kai.png" alt="Imagen 4" class="menu-image" onclick="showPhrase(4)")
+      img(src="./Public/Recursos/Stain.png" alt="Imagen 5" class="menu-image" onclick="showPhrase(5)")
     #phrase-container(transition-style="in:custom:circle-swoop")
       h1#phrase
-    script(src="Tareas/Public/Js/transiciones.js")
+    script(src="./Public/Js/transiciones.js")
