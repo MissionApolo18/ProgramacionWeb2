@@ -1,10 +1,22 @@
-import express from "express";
+import express, { Router } from "express";
 import { inicio } from "./controllers/inicioController.js";
+import db from "./models/db.js";
+import router_hotel from "./routes/hotel_router.js"
+
+
 
 //crear aplicación
 const app = express();
 //accesos a los datos del formulario
 app.use(express.urlencoded({extended: true}))
+//conectar la base de datos
+try {
+    await db.authenticate()
+    db.sync()
+    console.log("Conexión exitosa a la db")
+} catch (error) {
+    console.log(error)
+}
 //configurar pug
 app.set("view engine", "pug");
 app.set("views", "./views")
@@ -12,6 +24,7 @@ app.set("views", "./views")
 app.use(express.static("public"))
 //routing
 app.use("/", inicio);
+app.use("/hotel", Router, Hotel);
 //definir el puerto
 const port = 2800
 app.listen(port, () => {
