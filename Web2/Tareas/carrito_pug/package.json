@@ -1,0 +1,23 @@
+{
+  "name": "carrito_pug",
+  "version": "1.0.0",
+  "description": "Nodejs Mysql Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Nodejs",
+    "Mysql",
+    "Express"
+  ],
+  "author": "Mission_Apolo18",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

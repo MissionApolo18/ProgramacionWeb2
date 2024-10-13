@@ -9,3 +9,6 @@ use hoteles
 desc hotel
 desc gerente
 
+foo, bar - -Documentración
+
+bdd y funcionalidad = 50%
