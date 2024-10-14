@@ -1,0 +1,13 @@
+extends index
+
+block content
+  .selection-container
+    label(for='platform') Seleccionar Plataforma:
+    select#platform(onchange='showPlatformContent()')
+      option(value='xbox') Xbox
+      option(value='psp') PSP
+      option(value='nintendo') Nintendo
+
+  // Aquí se cargará dinámicamente el contenido de los videojuegos
+  .platform-content#platform-content
+    h2 Selecciona una plataforma para ver los juegos disponibles.

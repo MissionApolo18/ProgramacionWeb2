@@ -1,0 +1,11 @@
+extends index
+
+block content
+  h2 Comprar Videojuegos para #{platform} 
+  .card-container
+    each game in games
+      .card
+        img(src=`/images/${game.image}` alt=game.title)
+        h3= game.title
+        p Precio: $#{game.price}
+        button Comprar Ahora
