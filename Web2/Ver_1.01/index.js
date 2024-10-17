@@ -2,7 +2,7 @@ import express, { Router } from "express";
 import { inicio } from "./controllers/inicioController.js";
 import db from "./models/db.js";
 import router_hotel from "./routes/hotel_router.js"
-
+import router_Gerente from "./routes/gerente_router.js";
 
 
 //crear aplicación
@@ -25,6 +25,7 @@ app.use(express.static("public"))
 //routing
 app.use("/", inicio);
 app.use("/hotel", Router, Hotel);
+app.use("/gerente",router_Gerente)
 //definir el puerto
 const port = 2800
 app.listen(port, () => {

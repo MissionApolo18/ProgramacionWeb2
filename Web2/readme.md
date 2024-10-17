@@ -17,6 +17,7 @@ npm i pug
 // para ejecutar la vista
 npm run server
 En el json
+Patito24 - root
 
 <p>No tocar Node-modules ni package-lock.json</p>
 Controller
@@ -27,5 +28,8 @@ Controller
 
 Crear carpeta de 'config', 'controllers', 'public', 'routes', 'views', estas son las carpetas recomendadas
 
-No usar html, usar pug y adaptar el código de Goku
-Para el martes
+Tarea
+Diseñar la base de datos del carrito
+Para el proyecto de hotel, crear el esquema de la BD y crear una tabla que diga 'misdatos' con
+los datos id, dato1 ...dato5 (como varchar(255)), primary key(id),default character set utf8mb
+y se guarda con un source esquema.sql

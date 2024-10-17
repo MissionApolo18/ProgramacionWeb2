@@ -14,3 +14,5 @@ const accionMostrarHotel = async (req, res) => {
         hotel: hoteles
     });
 }
+
+export {accionMostrarHotel}
