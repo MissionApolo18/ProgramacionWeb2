@@ -24,7 +24,7 @@ app.set("views", "./views")
 app.use(express.static("public"))
 //routing
 app.use("/", inicio);
-app.use("/hotel", Router, Hotel);
+app.use("/hotel", Router, router_hotel);
 app.use("/gerente",router_Gerente)
 //definir el puerto
 const port = 2800

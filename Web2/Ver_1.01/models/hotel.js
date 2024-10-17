@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "./db.js";
-import Gerente from "./Gerente.js"
+import Gerente from "./gerente.js"
 
 export const Hotel = db.define("hoteles", {
     id_htl: {

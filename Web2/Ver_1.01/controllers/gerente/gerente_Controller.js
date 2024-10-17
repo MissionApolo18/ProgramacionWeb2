@@ -1,7 +1,7 @@
 import Gerente from "../../models/gerente.js"
 import { Hotel } from "../../models/hotel.js"
 import MisDatos from "../../models/misdatos.js";
-
+import db from "../../models/db.js";
 
 const accionMostrarGerente = async (req, res) => {
     res.render("gerente/altaGerente",{

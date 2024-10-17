@@ -1,4 +1,6 @@
 import { Sequelize } from "sequelize";
+import db from "./db.js";
+
 export const MisDatos = db.define (
     "misdatos",
     {

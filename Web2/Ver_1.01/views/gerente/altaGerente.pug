@@ -14,7 +14,11 @@ block cuerpocontenido
                     Nombre del hotel&nbsp; &nbsp; &nbsp;
                     select#hotel(name="id_htl")
                         each datos in info 
-                            if(datos.dato1!=hotelselect)
-                                option(value=datos.dato1) #{datos.dato2} 
-                            else 
-                                option(value=datos.dato1 selected) #{datos.dato2} 
+                            option(value=datos.dato1 selected) #{datos.dato2} 
+                
+                div(class="mb-1")
+                    label(for="nombre" class="form-label") Nombre
+                    input#nombre(class="form-control" type="text" placeHolder="Nombre del gerente" name="nombre" value=dato?dato.nombre:'')
+                
+                div(class="mb-1")
+                    button(type="submit" class="btn btn-primary col-auto") Envíar

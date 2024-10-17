@@ -9,6 +9,6 @@ const router_Gerente=express.Router();
 
 //ruta hotel
 router_Gerente.get("/verGerente", accionMostrarGerente)
-router_Gerente.post("/altagerente", accionAltaGerente);
+router_Gerente.post("/altaGerente", accionAltaGerente);
 
 export default router_Gerente;

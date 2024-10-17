@@ -1,6 +1,6 @@
-import { Hotel } from "./hotel";
+import { Hotel } from "./hotel.js";
 import { Sequelize } from "sequelize";
-import db from "./db";
+import db from "./db.js";
 export const Gerente = db.define(
     "gerentes",
     {
