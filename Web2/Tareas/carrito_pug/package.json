@@ -16,7 +16,9 @@
   "author": "Mission_Apolo18",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.3",
     "express": "^4.21.1",
+    "mysql2": "^3.11.3",
     "pug": "^3.0.3"
   },
   "devDependencies": {

@@ -31,3 +31,14 @@ const port = 2800
 app.listen(port, () => {
     console.log(`Esperando peticiones en el puerto: ${port}`);
 });
+
+//Variables de sesión
+const session = require('express-session');
+
+// Configuración de la sesión
+app.use(session({
+  secret: 'Hassaikai28', 
+  resave: false,               
+  saveUninitialized: false,      
+  //cookie: { maxAge: 60000 }    
+}));
