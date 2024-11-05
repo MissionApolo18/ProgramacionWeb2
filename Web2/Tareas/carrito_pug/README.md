@@ -1,4 +1,5 @@
 # Aplicación de carrito para ventas de videojuegos
+Equipo: 9
 
 ## Indice
 
@@ -54,3 +55,11 @@ Aquí es donde todos los controladores se enlazan entre sí, permitiendo que tod
 ### Index.pug
 Esta es la vista principal de la página.
 Actualmente, se encuentra "fragmentada" en capas, las cuales permiten que su modificación para nuevas funcionalidades sea más rápida.
+
+## Por Añadir
+
+- Sistema de seguridad: 
+    - Tabla usuario, comprobar que el correo no se repita y lo básico de una contraseña (8 a 10 caracteres), agregar ID_rol
+    - Jerarquizar los usuarios: admin, usuario y añadirlo a la bd
+- En el header agregar el nombre de usuario, funcionalidades de añadir, eliminar o modificar videojuego para la parte del admin.
+- Reporte de inventario, al final debe de crear un PDF

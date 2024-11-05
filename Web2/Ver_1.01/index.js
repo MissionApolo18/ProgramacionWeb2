@@ -1,8 +1,8 @@
 import express, { Router } from "express";
-import { inicio } from "./controllers/inicioController.js";
-import db from "./models/db.js";
+import db from "./config/db.js"
 import router_hotel from "./routes/hotel_router.js"
 import router_Gerente from "./routes/gerente_router.js";
+import credenciales_router from "./routes/credenciales_router.js";
 
 
 //crear aplicación
@@ -23,7 +23,7 @@ app.set("views", "./views")
 //Carpeta pública
 app.use(express.static("public"))
 //routing
-app.use("/", inicio);
+app.use("/", credenciales_router);
 app.use("/hotel", Router, router_hotel);
 app.use("/gerente",router_Gerente)
 //definir el puerto
@@ -42,3 +42,4 @@ app.use(session({
   saveUninitialized: false,      
   //cookie: { maxAge: 60000 }    
 }));
+

@@ -1,17 +1,36 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Fan-tienda de Videojuegos
-  link(rel='stylesheet' href='CSS/estilo.css')
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Fan-tienda de Videojuegos
+    link(rel='stylesheet' href='CSS/estilo.css')
   body
     header
       h1 Fan-tienda de Videojuegos
 
     // Bloque donde se insertarán las vistas específicas
     block content
-    img(src='/images/tu-imagen.jpg', alt='Descripción de la imagen')
+      .selection-container
+        label(for='platform') Seleccionar Plataforma:
+        select#platform(onchange='showPlatformContent()')
+        option(value='xbox') Xbox
+        option(value='psp') PSP
+        option(value='nintendo') Nintendo
 
+      .platform-content#platform-content
+        h2 Selecciona una plataforma para ver los juegos disponibles.
+
+      // Sección para mostrar los videojuegos según la plataforma seleccionada
+      h2 Comprar Videojuegos para #{platform} 
+      .card-container
+        each game in games
+          .card
+            img(src=`/images/${game.image}` alt=game.title)
+            h3= game.title
+            p Precio: $#{game.price}
+            button Comprar Ahora
     footer
       p © 2024 Tienda de Videojuegos
-      script(src='./Tareas/carrito_pug/public/Js/script.js')
+      script(src='Js/script.js')
+

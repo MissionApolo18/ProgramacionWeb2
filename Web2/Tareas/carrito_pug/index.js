@@ -3,21 +3,32 @@ import juegosRouter from './routes/juegos_router.js'; // Importar las rutas de j
 import mysql from 'mysql2';
 import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 
 // Configurar Pug
 app.set("view engine", "pug");
-app.set("views", "./views");
+app.set("views", join(__dirname, 'views'));
 
 // Configurar body-parser para manejar datos POST
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Tareas/carrito_pug/views/index.pug'));
+// Ruta raíz
+app.get('/juegos', (req, res) => {
+    const platform = req.query.platform || 'xbox'; // Puedes obtener la plataforma de una consulta
+    const games = [
+        { image: 'game1.jpg', title: 'Juego 1', price: 49.99 },
+        { image: 'game2.jpg', title: 'Juego 2', price: 59.99 },
+        // Agrega más juegos aquí
+    ];
+
+    res.render('juegos', { platform, games });
 });
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+
 
 // Conectar a la base de datos MariaDB
 const db = mysql.createConnection({
@@ -33,11 +44,6 @@ db.connect(err => {
         return;
     }
     console.log('Conectado a la BD');
-});
-
-// Ruta para mostrar el formulario (puedes servir un archivo .html)
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/login.js');
 });
 
 // Ruta para manejar la recepción de datos del formulario

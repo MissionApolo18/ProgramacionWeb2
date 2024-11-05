@@ -21,3 +21,20 @@ debe de guardar datos en la bd
 - Base de datos
 - Interfaz
 
+
+# Clase 5 - nov
+## Realizar lo del pdf que subió
+
+- instalar bcrypt y nodemailer
+- Registrarse en Mailtrap 
+#### El jueves hay revisión del avance en carrito de compra
+
+La contraseña no debe de ser visible en ningún lado
+
+"Hola ___, para registrarse en la página..." 
+- Agregar botón con enlace para enlazar el endpoint y el token creado para la confirmación (pdf)
+
+Basicamente, se está haciendo el sistema de confirmación para el registro de usuario.
+
+#### En lavida real se puede cambiar por el ofrecido por la empresa
+

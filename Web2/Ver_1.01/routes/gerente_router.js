@@ -1,6 +1,6 @@
 import express from "express";
 import {accionMostrarGerente,accionAltaGerente} 
-from "../controllers/gerente/gerenteController.js";
+from "../controllers/gerente/gerente_Controller.js";
 
 const router_Gerente=express.Router();
 

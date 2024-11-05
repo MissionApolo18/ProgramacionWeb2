@@ -1,6 +1,19 @@
-extends index
+extends index.pug 
 
 block content
+  h1 Esto es un bloque de prueba
+  .selection-container
+    label(for='platform') Seleccionar Plataforma:
+    select#platform(onchange='showPlatformContent()')
+      option(value='xbox') Xbox
+      option(value='psp') PSP
+      option(value='nintendo') Nintendo
+
+  // Aquí se cargará dinámicamente el contenido de los videojuegos
+  .platform-content#platform-content
+    h2 Selecciona una plataforma para ver los juegos disponibles.
+
+  // Sección para mostrar los videojuegos según la plataforma seleccionada
   h2 Comprar Videojuegos para #{platform} 
   .card-container
     each game in games

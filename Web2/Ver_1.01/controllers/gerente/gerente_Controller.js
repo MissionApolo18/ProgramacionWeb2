@@ -1,7 +1,7 @@
-import Gerente from "../../models/Gerente.js";
-import {Hotel} from "../../models/Hotel.js";
-import MisDatos from '../../models/MisDatos.js';
-import db from "../../config/db.js";
+import Gerente from "../../models/gerente.js";
+import {Hotel} from "../../models/hotel.js";
+import MisDatos from '../../models/misdatos.js';
+import db from "../../config/db.js"
 
 //se traen todos los hoteles que no tienen Gerente
 async function consulta(){
