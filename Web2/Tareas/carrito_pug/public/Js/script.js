@@ -1,13 +1,15 @@
 function showGamesForCompany() {
-    const company = document.getElementById('company').value;
-    const cardContainer = document.getElementById('card-container');
-  
-    if (company) {
-      fetch(`/games/${company}`)
-        .then(response => response.json())
-        .then(data => {
-          cardContainer.innerHTML = ''; // Limpiar contenido previo
-  
+  const company = document.getElementById('platform').value;  // Obtiene el valor de la plataforma seleccionada
+  const cardContainer = document.querySelector('.card-container');  // Contenedor de las tarjetas
+
+  if (company) {
+    fetch(`/games/${company}`)
+      .then(response => response.json())
+      .then(data => {
+        cardContainer.innerHTML = ''; // Limpiar contenido previo
+
+        // Verificar si la respuesta tiene juegos
+        if (data.games && data.games.length > 0) {
           data.games.forEach(game => {
             const card = `
               <div class="card">
@@ -19,12 +21,15 @@ function showGamesForCompany() {
             `;
             cardContainer.innerHTML += card;
           });
-        })
-        .catch(error => {
-          console.error('Error fetching games:', error);
-        });
-    } else {
-      cardContainer.innerHTML = '<h2>Selecciona una compañía para ver sus videojuegos.</h2>';
-    }
+        } else {
+          cardContainer.innerHTML = '<h2>No hay juegos disponibles para esta plataforma.</h2>';
+        }
+      })
+      .catch(error => {
+        console.error('Error al obtener los juegos:', error);
+        cardContainer.innerHTML = '<h2>Error al cargar los juegos.</h2>';
+      });
+  } else {
+    cardContainer.innerHTML = '<h2>Selecciona una plataforma para ver los videojuegos.</h2>';
   }
-  
+}

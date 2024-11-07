@@ -1,9 +1,8 @@
 import express from 'express';
-import juegosRouter from './routes/juegos_router.js'; // Importar las rutas de juegos
-import mysql from 'mysql2';
 import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import db from './config/db.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -17,57 +16,55 @@ app.set("views", join(__dirname, 'views'));
 // Configurar body-parser para manejar datos POST
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Ruta raíz
-app.get('/juegos', (req, res) => {
-    const platform = req.query.platform || 'xbox'; // Puedes obtener la plataforma de una consulta
-    const games = [
-        { image: 'game1.jpg', title: 'Juego 1', price: 49.99 },
-        { image: 'game2.jpg', title: 'Juego 2', price: 59.99 },
-        // Agrega más juegos aquí
-    ];
+// Datos de juegos por plataforma
+const gamesData = {
+    xbox: [
+        { image: './public/images/halo.jpg', title: 'Halo', price: 49.99 },
+        { image: './public/images/halo.jpg', title: 'Forza Horizon', price: 59.99 },
+        { image: './public/images/halo.jpg', title: 'Gears of War', price: 39.99 },
+        { image: './public/images/halo.jpg', title: 'FIFA 2024', price: 69.99 },
+        { image: './public/images/halo.jpg', title: 'Call of Duty', price: 54.99 }
+    ],
+    psp: [
+        { image: 'Recursos/cod.jpg', title: 'God of War', price: 49.99 },
+        { image: 'Recursos/cod.jpg', title: 'Tekken', price: 39.99 },
+        { image: 'Recursos/cod.jpg', title: 'FIFA 2024', price: 69.99 },
+        { image: 'Recursos/cod.jpg', title: 'GTA: Liberty City', price: 59.99 },
+        { image: 'Recursos/cod.jpg', title: 'Assassin\'s Creed', price: 64.99 }
+    ],
+    nintendo: [
+        { image: 'Recursos/cod.jpg', title: 'Mario Kart', price: 59.99 },
+        { image: 'Recursos/cod.jpg', title: 'Zelda: Breath of the Wild', price: 79.99 },
+        { image: 'Recursos/cod.jpg', title: 'Animal Crossing', price: 49.99 },
+        { image: 'Recursos/cod.jpg', title: 'Super Smash Bros', price: 69.99 },
+        { image: 'Recursos/cod.jpg', title: 'Splatoon', price: 54.99 }
+    ]
+};
 
-    res.render('juegos', { platform, games });
+// Ruta principal
+app.get('/', (req, res) => {
+    const platform = 'xbox'; // Cambia esta plataforma según la plataforma que necesites
+    const games = gamesData[platform] || []; // Obtiene juegos para la plataforma, o un arreglo vacío si no existe
+
+    res.render('index', { platform, games }); // Pasa 'platform' y 'games' a 'index.pug'
 });
 
-
-// Conectar a la base de datos MariaDB
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Patito24',
-    database: 'clientes_db'
-});
-
-db.connect(err => {
-    if (err) {
-        console.error('Error conectando a la BD:', err);
-        return;
+// Ruta para obtener los videojuegos según la plataforma
+app.get('/games/:platform', async (req, res) => {
+    const platform = req.params.platform;
+    try {
+      const [rows] = await db.execute('SELECT * FROM videojuegos WHERE plataforma = ?', [platform]);
+      res.json({ games: rows });
+    } catch (error) {
+      console.error('Error al obtener los juegos:', error);
+      res.status(500).json({ games: [] });
     }
-    console.log('Conectado a la BD');
 });
 
-// Ruta para manejar la recepción de datos del formulario
-app.post('/registrar-cliente', (req, res) => {
-    const { nombre, apellido_paterno, apellido_materno, correo, telefono } = req.body;
 
-    const query = `INSERT INTO clientes (nombre, apellido_paterno, apellido_materno, correo, telefono) VALUES (?, ?, ?, ?, ?)`;
-
-    db.query(query, [nombre, apellido_paterno, apellido_materno, correo, telefono], (err, result) => {
-        if (err) {
-            console.error('Error al guardar en la BD:', err);
-            res.send('Error al registrar el cliente');
-        } else {
-            console.log('Cliente registrado:', result);
-            res.send('Cliente registrado exitosamente');
-        }
-    });
-});
-
+  
 // Carpeta pública
 app.use(express.static("public"));
-
-// Rutas
-app.use("/juegos", juegosRouter); // Todas las rutas bajo "/juegos" se gestionarán aquí
 
 // Puerto
 const port = 2828;

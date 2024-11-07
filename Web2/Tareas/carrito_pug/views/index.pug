@@ -13,24 +13,18 @@ html
     block content
       .selection-container
         label(for='platform') Seleccionar Plataforma:
-        select#platform(onchange='showPlatformContent()')
-        option(value='xbox') Xbox
-        option(value='psp') PSP
-        option(value='nintendo') Nintendo
+        select#platform(name="platform" onchange='showGamesForCompany()')
+          option(value='xbox') Xbox
+          option(value='psp') PSP
+          option(value='nintendo') Nintendo
 
-      .platform-content#platform-content
+      .platform-content
         h2 Selecciona una plataforma para ver los juegos disponibles.
+        .card-container  <!-- Aquí se van a insertar las tarjetas de los juegos -->
 
-      // Sección para mostrar los videojuegos según la plataforma seleccionada
-      h2 Comprar Videojuegos para #{platform} 
-      .card-container
-        each game in games
-          .card
-            img(src=`/images/${game.image}` alt=game.title)
-            h3= game.title
-            p Precio: $#{game.price}
-            button Comprar Ahora
     footer
       p © 2024 Tienda de Videojuegos
       script(src='Js/script.js')
+
+
 
