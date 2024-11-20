@@ -1,14 +1,30 @@
-doctype html
+
 html
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title Fan-tienda de Videojuegos
     link(rel='stylesheet' href='CSS/estilo.css')
-  body
+    link(rel='stylesheet' href='CSS/carrito.css')
+    h1 Fan-tienda de Videojuegos
     header
-      h1 Fan-tienda de Videojuegos
-
+    nav.navbar
+    a.nav-link(href='#') Inicio 
+    img#carrito.img-carrito(src='img/cart.png', alt='Carrito')
+    #carrito-contenido
+   
+    button#toggleButton.toggle-button Usuario
+    .container
+     #formContainer.form-container.hidden
+    form
+      label(for='userId') ID:
+      input#userId(type='text' name='userId' placeholder='Introduce tu ID' required='')
+      label(for='password') Contrase&ntilde;a:
+      input#password(type='password' name='password' placeholder='Introduce tu contraseña' required='')
+      button.submit-button(type='submit') Iniciar sesi&oacute;n
+    a.forgot-password(href='#') Olvid&eacute; mi contrase&ntilde;a
+   
+    body 
     // Bloque donde se insertarán las vistas específicas
     block content
       .selection-container
@@ -25,6 +41,7 @@ html
     footer
       p © 2024 Tienda de Videojuegos
       script(src='Js/script.js')
+      
 
 
 

@@ -33,3 +33,8 @@ function showGamesForCompany() {
     cardContainer.innerHTML = '<h2>Selecciona una plataforma para ver los videojuegos.</h2>';
   }
 }
+document.getElementById('toggleButton').addEventListener('click', function () {
+  const formContainer = document.getElementById('formContainer');
+  formContainer.classList.toggle('hidden');
+});
+
