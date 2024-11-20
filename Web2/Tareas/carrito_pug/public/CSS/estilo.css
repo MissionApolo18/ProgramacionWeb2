@@ -4,6 +4,17 @@ body {
     color: #5C0D68;
     padding: 20px;
 }
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-bottom: 2px solid transparent; /* Línea invisible debajo */
+    transition: border-bottom 0.3s ease; /* Efecto de animación */
+}
+
+nav a:hover {
+    border-bottom: 2px solid white; /* Muestra la línea al pasar el mouse */
+}
 
 .container {
     text-align: center;
@@ -65,17 +76,19 @@ body {
 }
 
 .toggle-button {
-    padding: 10px 20px;
+    padding: 5px 5px;
     font-size: 16px;
-    background-color: #5C0D68;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    color: #5C0D68;
+    border: none ;
+    border-radius: 9px;
     cursor: pointer;
+    width: 100px;
+    height: 40px;
+    
 }
 
 .toggle-button:hover {
-    background-color: #5C0D68;
+    background-color: #9225a3;
 }
 
 header {
@@ -95,7 +108,7 @@ h2 {
 .platform-content {
     background-color: #C692DD;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
