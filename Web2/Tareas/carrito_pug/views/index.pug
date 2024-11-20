@@ -1,46 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fan-tienda de Videojuegos</title>
+    <link rel="stylesheet" href="CSS/estilo.css" />
+    <link rel="stylesheet" href="CSS/carrito.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Fan-tienda de Videojuegos</h1>
+    </header>
+    <nav class="navbar">
+      <a class="nav-link" href="#">Inicio</a>
+      <img class="img-carrito" id="carrito" src="images/cart.png" alt="Carrito" />
+      <button class="toggle-button" id="toggleButton">Usuario</button>
+      <div class="form-container hidden" id="formContainer">
+      <form>
+        <label for="userId">ID:</label>
+        <input id="userId" type="text" name="userId" placeholder="Introduce tu ID" required />
+        <input for="password">Contraseña:</label>
+        <input id="password" type="password" name="password" placeholder="Introduce tu contraseña" required />
+        <button class="submit-button" type="submit">Iniciar sesión</button>
+      </form>
+        <a class="forgot-password" href="#">Olvidé mi contraseña</a>
+        <a class="forgot-password" href="#">Crear Cuenta</a>
+      </div>
+    </nav>
+    <div class="selection-container">
+      <label for="platform">Seleccionar Plataforma:</label>
+      <select id="platform" name="platform" onchange="showGamesForCompany()">
+        <option value="xbox">Xbox</option>
+        <option value="psp">PSP</option>
+        <option value="nintendo">Nintendo</option>
+      </select>
+    </div>
+    <div class="platform-content">
+      <h2>Selecciona una plataforma para ver los juegos disponibles.</h2>
+      <div class="card-container">
+        <!-- Aquí se van a insertar las tarjetas de los juegos -->
+      </div>
+    </div>
+    <footer>
+      <p>© 2024 Tienda de Videojuegos</p>
+    </footer>
+    <script src="Js/script.js"></script>
+    <script src="Js/carrito.js"></script>
+  </body>
+</html>
 
-html
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title Fan-tienda de Videojuegos
-    link(rel='stylesheet' href='CSS/estilo.css')
-    link(rel='stylesheet' href='CSS/carrito.css')
-    h1 Fan-tienda de Videojuegos
-    header
-    nav.navbar
-    a.nav-link(href='#') Inicio 
-    img#carrito.img-carrito(src='img/cart.png', alt='Carrito')
-    #carrito-contenido
-   
-    button#toggleButton.toggle-button Usuario
-    .container
-     #formContainer.form-container.hidden
-    form
-      label(for='userId') ID:
-      input#userId(type='text' name='userId' placeholder='Introduce tu ID' required='')
-      label(for='password') Contrase&ntilde;a:
-      input#password(type='password' name='password' placeholder='Introduce tu contraseña' required='')
-      button.submit-button(type='submit') Iniciar sesi&oacute;n
-    a.forgot-password(href='#') Olvid&eacute; mi contrase&ntilde;a
-   
-    body 
-    // Bloque donde se insertarán las vistas específicas
-    block content
-      .selection-container
-        label(for='platform') Seleccionar Plataforma:
-        select#platform(name="platform" onchange='showGamesForCompany()')
-          option(value='xbox') Xbox
-          option(value='psp') PSP
-          option(value='nintendo') Nintendo
-
-      .platform-content
-        h2 Selecciona una plataforma para ver los juegos disponibles.
-        .card-container  <!-- Aquí se van a insertar las tarjetas de los juegos -->
-
-    footer
-      p © 2024 Tienda de Videojuegos
-      script(src='Js/script.js')
       
 
 

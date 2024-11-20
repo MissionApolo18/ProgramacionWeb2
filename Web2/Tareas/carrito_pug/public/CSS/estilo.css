@@ -4,13 +4,14 @@ body {
     color: #5C0D68;
     padding: 20px;
 }
+
 .container {
     text-align: center;
     margin-top: 20px;
 }
 
 .form-container {
-    display: none;
+    display: none; /* Establece el formulario como oculto por defecto */
     flex-direction: column;
     align-items: center;
     background-color: white;
@@ -60,7 +61,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none; /* Clase para ocultar elementos */
 }
 
 .toggle-button {
@@ -74,41 +75,7 @@ body {
 }
 
 .toggle-button:hover {
-    background-color:#5C0D68;
-}
-
-.form-container {
-    margin-top: 20px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.form-container label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-container input {
-    margin-bottom: 15px;
-    padding: 10px;
-    width: 100%;
-    max-width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.submit-button {
-    padding: 10px 20px;
     background-color: #5C0D68;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 header {
@@ -160,8 +127,7 @@ h2 {
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    box-sizing: border-box; /* Esta madre es la que hace que no se salga del card*/
-    /*border: none;*/
+    box-sizing: border-box; /* Esta propiedad hace que no se salga del card */
 }
 
 .card img {
@@ -170,11 +136,10 @@ h2 {
     margin-bottom: 10px;
 }
 
-
 button {
     background-color: #5C0D68;
     color: white;
-    padding: 10px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -191,12 +156,12 @@ select {
     padding: 10px;
     font-size: 16px;
     border-radius: 10px;
-    border: 2px solid #9458A1; /* color del borde */
-    background-color: #EACDF6; /* color del fondo */
-    color: #5C0D68; /* color del texto */
+    border: 2px solid #9458A1; /* Color del borde */
+    background-color: #EACDF6; /* Color de fondo */
+    color: #5C0D68; /* Color del texto */
     outline: none;
     cursor: pointer;
-    -webkit-appearance: none; /* Para eliminar el estilo predeterminado de algunos navegadores */
+    -webkit-appearance: none; /* Elimina el estilo predeterminado en algunos navegadores */
     -moz-appearance: none;
     appearance: none;
 }
@@ -222,3 +187,6 @@ select option {
 select:hover {
     background-color: #A66FB9;
 }
+
+
+
