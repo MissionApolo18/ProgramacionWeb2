@@ -36,5 +36,5 @@ La contraseña no debe de ser visible en ningún lado
 
 Basicamente, se está haciendo el sistema de confirmación para el registro de usuario.
 
-#### En lavida real se puede cambiar por el ofrecido por la empresa
+#### En la vida real se puede cambiar por el ofrecido por la empresa
 

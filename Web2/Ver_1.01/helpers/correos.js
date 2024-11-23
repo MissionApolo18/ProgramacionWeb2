@@ -25,3 +25,5 @@ const correoRegistro = async(info) => {
         ` 
     })
 };
+
+export {correoRegistro};

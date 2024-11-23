@@ -45,4 +45,10 @@ Usuario.belongsTo(Rol, {
         name: "id_rls",
     },
 });
+
+//Metodo prototype
+Usuario.prototype.verificandoClave=function(password){
+    return bcrypt.compareSync(password,this.password);
+}
+
 export default Usuario;

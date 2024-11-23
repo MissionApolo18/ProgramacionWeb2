@@ -1,7 +1,6 @@
 import Usuario from '../../models/usuario.js';
 import { check, validationResult } from 'express-validator';
 import { idGenera } from '../../helpers/tokens.js';
-
 import {correoRegistro} from '../../helpers/correos.js'
 import dotenv from 'dotenv'
 
@@ -31,7 +30,7 @@ const registrAr = async (req, res) => {
         id_rls: 2,
         token: idGenera()
     });
-    usuario.save();
+    await usuario.save();
     //mostrar mensaje de confirmacions
     res.render("credenciales/confirmacion", {
         pagina: "Usuario se registro exitosamente",

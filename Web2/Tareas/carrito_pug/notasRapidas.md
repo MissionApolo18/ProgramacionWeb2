@@ -1,33 +1,26 @@
-# index.js
-// Conectar a la base de datos MariaDB
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Patito24',
-    database: 'clientes_db'
-});
+# Pug index
+// Contenedor para la selección de la plataforma
+    .selection-container
+      label(for='platform') Seleccionar Plataforma:
+      select#platform(name="platform" onchange='showGamesForCompany()')
+        option(value='') -- Selecciona una plataforma --
+        option(value='xbox') Xbox
+        option(value='psp') PSP
+        option(value='nintendo') Nintendo
 
-db.connect(err => {
-    if (err) {
-        console.error('Error conectando a la BD:', err);
-        return;
-    }
-    console.log('Conectado a la BD');
-});
+    // Contenido que se actualizará dinámicamente
+    .platform-content#platform-content
+      h2 Selecciona una plataforma para ver los juegos disponibles.
 
-// Ruta para manejar la recepción de datos del formulario
-app.post('/registrar-cliente', (req, res) => {
-    const { nombre, apellido_paterno, apellido_materno, correo, telefono } = req.body;
+      // Sección para mostrar los videojuegos según la plataforma seleccionada
+      .card-container#card-container
+        each game in games
+          .card
+            img(src=`/images/${game.image}` alt=game.title)
+            h3= game.title
+            p Precio: $#{game.price}
+            button Comprar Ahora
 
-    const query = `INSERT INTO clientes (nombre, apellido_paterno, apellido_materno, correo, telefono) VALUES (?, ?, ?, ?, ?)`;
-
-    db.query(query, [nombre, apellido_paterno, apellido_materno, correo, telefono], (err, result) => {
-        if (err) {
-            console.error('Error al guardar en la BD:', err);
-            res.send('Error al registrar el cliente');
-        } else {
-            console.log('Cliente registrado:', result);
-            res.send('Cliente registrado exitosamente');
-        }
-    });
-});
+    footer
+      p © 2024 Tienda de Videojuegos
+      script(src='Js/script.js')

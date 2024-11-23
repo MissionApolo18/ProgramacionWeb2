@@ -3,15 +3,15 @@ import { getXboxGames } from '../controllers/juegos/xbox_controller.js';
 import { getPspGames } from '../controllers/juegos/psp_controller.js';
 import { getNintendoGames } from '../controllers/juegos/nintendo_controller.js';
 
-const router = express.Router();
+const juegos_router = express.Router();
 
 // Ruta para los juegos de Xbox
-router.get('/xbox', getXboxGames);
+juegos_router.get('/xbox', getXboxGames);
 
 // Ruta para los juegos de PSP
-router.get('/psp', getPspGames);
+juegos_router.get('/psp', getPspGames);
 
 // Ruta para los juegos de Nintendo
-router.get('/nintendo', getNintendoGames);
+juegos_router.get('/nintendo', getNintendoGames);
 
-export default router;
+export default juegos_router;

@@ -1,73 +1,74 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import db from './config/db.js';
+//Importaciones
+import express from "express";
+import db from "./config/db.js";
+import path from "path";
+import { fileURLToPath } from "url";
+import Consola from "./models/consola.js";
+import JuegoConsola from "./models/juegoConsola.js";
+import dotenv from 'dotenv';
+import './models/associations.js'
+import { error } from "console";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
 const app = express();
+dotenv.config()
 
-// Configurar Pug
+// Configuración de la base de datos
+try {
+    await db.authenticate();
+    console.log("Conexión exitosa a la base de datos");
+} catch (error) {
+    console.error("Error al conectar a la base de datos:", error);
+}
+
+// Configuración de Pug
 app.set("view engine", "pug");
-app.set("views", join(__dirname, 'views'));
+app.set("views", path.join(__dirname, "views"));
 
-// Configurar body-parser para manejar datos POST
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Datos de juegos por plataforma
-const gamesData = {
-    xbox: [
-        { image: './public/images/halo.jpg', title: 'Halo', price: 49.99 },
-        { image: './public/images/halo.jpg', title: 'Forza Horizon', price: 59.99 },
-        { image: './public/images/halo.jpg', title: 'Gears of War', price: 39.99 },
-        { image: './public/images/halo.jpg', title: 'FIFA 2024', price: 69.99 },
-        { image: './public/images/halo.jpg', title: 'Call of Duty', price: 54.99 }
-    ],
-    psp: [
-        { image: 'Recursos/cod.jpg', title: 'God of War', price: 49.99 },
-        { image: 'Recursos/cod.jpg', title: 'Tekken', price: 39.99 },
-        { image: 'Recursos/cod.jpg', title: 'FIFA 2024', price: 69.99 },
-        { image: 'Recursos/cod.jpg', title: 'GTA: Liberty City', price: 59.99 },
-        { image: 'Recursos/cod.jpg', title: 'Assassin\'s Creed', price: 64.99 }
-    ],
-    nintendo: [
-        { image: 'Recursos/cod.jpg', title: 'Mario Kart', price: 59.99 },
-        { image: 'Recursos/cod.jpg', title: 'Zelda: Breath of the Wild', price: 79.99 },
-        { image: 'Recursos/cod.jpg', title: 'Animal Crossing', price: 49.99 },
-        { image: 'Recursos/cod.jpg', title: 'Super Smash Bros', price: 69.99 },
-        { image: 'Recursos/cod.jpg', title: 'Splatoon', price: 54.99 }
-    ]
-};
+// Middleware para servir archivos estáticos
+app.use(express.static("public"));
 
 // Ruta principal
-app.get('/', (req, res) => {
-    const platform = 'xbox'; // Cambia esta plataforma según la plataforma que necesites
-    const games = gamesData[platform] || []; // Obtiene juegos para la plataforma, o un arreglo vacío si no existe
-
-    res.render('index', { platform, games }); // Pasa 'platform' y 'games' a 'index.pug'
+app.get("/", (req, res) => {
+    res.render("index");
 });
 
-// Ruta para obtener los videojuegos según la plataforma
-app.get('/games/:platform', async (req, res) => {
-    const platform = req.params.platform;
+// Ruta para obtener juegos por plataforma
+app.get("/games/:platform", async (req, res) => {
+    const { platform } = req.params;
+
     try {
-      const [rows] = await db.execute('SELECT * FROM videojuegos WHERE plataforma = ?', [platform]);
-      res.json({ games: rows });
+        // Encuentra la consola según el nombre
+        const consola = await Consola.findOne({ where: { nombre: platform } });
+
+        if (!consola) {
+            return res.status(404).json({ games: [], message: "Plataforma no encontrada" });
+        }
+
+        // Encuentra los juegos relacionados con esa consola
+        const juegos = await JuegoConsola.findAll({
+            where: { id_consola: consola.id_consola },
+            include: { model: Consola },
+        });
+
+        // Prepara los datos para enviar al cliente
+        const gamesData = juegos.map((juego) => ({
+            title: juego.juego?.nombre || "Sin título",
+            price: juego.precio_usuario,
+            image: "default.jpg", // Cambiar si tienes un campo de imagen
+        }));
+
+        res.json({ games: gamesData });
     } catch (error) {
-      console.error('Error al obtener los juegos:', error);
-      res.status(500).json({ games: [] });
+        console.error("Error al obtener juegos:", error);
+        res.status(500).json({ message: "Error al obtener los juegos" });
     }
 });
 
-
-  
-// Carpeta pública
-app.use(express.static("public"));
-
-// Puerto
-const port = 2828;
-app.listen(port, () => {
-    console.log(`Servidor corriendo en el puerto ${port}`);
+// Puerto de la aplicación
+const PORT = 2828;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
