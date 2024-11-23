@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import db from "../config/db.js";
+import EstadoJuegos from "./estadoJuegos.js";
 
 const Carrito = db.define('Carrito', {
     id_carrito: {

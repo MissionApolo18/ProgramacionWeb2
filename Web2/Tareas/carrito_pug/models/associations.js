@@ -1,11 +1,26 @@
-import Consola from "./consola.js";
-import Juego from "./juego.js";
-import JuegoConsola from "./juegoConsola.js";
+// models/associations.js
+import Carrito from './carrito.js';
+import EstadoJuegos from './estadoJuegos.js';
+import Juego from './juego.js';
+import Consola from './consola.js';
+import JuegoConsola from './juegoConsola.js';
 
-// Establecer asociaciones después de que los modelos estén definidos
-JuegoConsola.belongsTo(Consola, { foreignKey: "id_consola" });
-JuegoConsola.belongsTo(Juego, { foreignKey: "id_juego" });
+// Relaciones entre Carrito y EstadoJuegos
+Carrito.hasMany(EstadoJuegos, { foreignKey: 'id_carrito' });
+EstadoJuegos.belongsTo(Carrito, { foreignKey: 'id_carrito' });
 
-// Si necesitas hacer asociaciones adicionales, puedes agregarlas aquí.
+// Relaciones entre EstadoJuegos y Juego
+EstadoJuegos.belongsTo(Juego, { foreignKey: 'id_juego' });
+Juego.hasMany(EstadoJuegos, { foreignKey: 'id_juego' });
 
-export default () => {};  // Función vacía o cualquier export que no interfiera con la inicialización
+// Relaciones entre Juego y JuegoConsola
+Juego.hasMany(JuegoConsola, { foreignKey: 'id_juego' });
+JuegoConsola.belongsTo(Juego, { foreignKey: 'id_juego' });
+
+// Relaciones entre Consola y JuegoConsola
+Consola.hasMany(JuegoConsola, { foreignKey: 'id_consola' });
+JuegoConsola.belongsTo(Consola, { foreignKey: 'id_consola' });
+
+export default function setupAssociations() {
+    // Las asociaciones ya están configuradas aquí
+}

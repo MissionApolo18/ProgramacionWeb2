@@ -14,10 +14,9 @@ const Juego = db.define("juego", {
     type: DataTypes.DECIMAL(5, 2),
     allowNull: true,
   },
+}, {
+  tableName: "juego",
+  timestamps:false,
 });
-
-// Relación con estadoJuegos
-Juego.hasMany(EstadoJuegos, { foreignKey: "id_juego" });
-Juego.hasMany(JuegoConsola, { foreignKey: "id_juego" });
 
 export default Juego;

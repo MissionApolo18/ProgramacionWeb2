@@ -3,17 +3,21 @@ import express from "express";
 import db from "./config/db.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import Carrito from "./models/carrito.js";
+import EstadoJuegos from "./models/estadoJuegos.js";
+import Juego from "./models/juego.js";
 import Consola from "./models/consola.js";
 import JuegoConsola from "./models/juegoConsola.js";
 import dotenv from 'dotenv';
 import './models/associations.js'
-import { error } from "console";
+import setupAssociations from "./models/associations.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 dotenv.config()
+setupAssociations();
 
 // Configuración de la base de datos
 try {

@@ -1,26 +1,21 @@
-// consola.js
 import { DataTypes } from "sequelize";
 import db from "../config/db.js";
-import JuegoConsola from "./juegoConsola.js";
 
-const Consola = db.define("consola", {
+const Consola = db.define('Consola', {
   id_consola: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    allowNull: false,
+      type: DataTypes.INTEGER, // Cambiado de Sequelize.INTEGER a DataTypes.INTEGER
+      primaryKey: true,
+      allowNull: false,
   },
   precio: {
-    type: DataTypes.DECIMAL(5, 2),
-    allowNull: true,
+      type: DataTypes.DECIMAL(5, 2), // Cambiado de Sequelize.DECIMAL a DataTypes.DECIMAL
   },
   nombre: {
-    type: DataTypes.STRING(255),
-    allowNull: true,
-  },
+      type: DataTypes.STRING, // Cambiado de Sequelize.STRING a DataTypes.STRING
+  }
+}, {
+  tableName: "consola",
+  timestamps: false,
 });
 
-// Relación con juegoConsola
-Consola.hasMany(JuegoConsola, { foreignKey: "id_consola" });
-
 export default Consola;
-

@@ -1,7 +1,7 @@
 // Asegúrate de importar los modelos primero
 import { DataTypes } from "sequelize";
 import db from "../config/db.js";
-import Juego from "./juego.js"; // Importar correctamente Juego
+import Juego  from "./juego.js";
 
 const EstadoJuegos = db.define('EstadoJuegos', {
     id_carrito: {
@@ -19,11 +19,9 @@ const EstadoJuegos = db.define('EstadoJuegos', {
         allowNull: false,
     }
 }, {
+    tableName: "estadoJuegos",
     timestamps: false,
 });
-
-// Establecer la relación después de importar todos los modelos
-EstadoJuegos.belongsTo(Juego, { foreignKey: "id_juego" });
 
 export default EstadoJuegos;
 
