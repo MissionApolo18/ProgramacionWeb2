@@ -1,5 +1,8 @@
 import express from "express";
-import { obtenerJuegosPorConsola } from "../controllers/juegosController.js"; // Importar el controlador
+import { obtenerJuegosPorConsola ,
+    actualizarCarrito,
+    eliminarJuegoDelCarrito
+ } from "../controllers/juegosController.js"; // Importar el controlador
 
 const router = express.Router();
 
@@ -10,5 +13,7 @@ router.get("/", (req, res) => {
 
 // Ruta para cargar juegos según la plataforma seleccionada
 router.get("/juegos/:plataforma", obtenerJuegosPorConsola);
+router.post("/carrito",actualizarCarrito);
+router.delete("/carrito", eliminarJuegoDelCarrito)
 
 export default router;
