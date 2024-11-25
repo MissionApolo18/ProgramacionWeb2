@@ -1,35 +1,58 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Fan-tienda de Videojuegos
-  link(rel='stylesheet' href='CSS/estilo.css')
-  link(rel='stylesheet' href='CSS/carrito.css')
-header
-  h1 Fan-tienda de Videojuegos
-nav.navbar
-  a.toggle-button(href='#') Inicio
-  a#toggleButton.toggle-button Usuario
-  #formContainer.form-container.hidden
-    form
-      label(for='userId') ID:
-      input#userId(type='text' name='userId' placeholder='Introduce tu ID' required='')
-      label(for='password') Contrase&ntilde;a:
-      input#password(type='password' name='password' placeholder='Introduce tu contraseña' required='')
-      button.submit-button(type='submit') Iniciar sesi&oacute;n
-    a.forgot-password(href='#') Olvid&eacute; mi contrase&ntilde;a
-    a.forgot-password(href='#') Crear Cuenta
-  img#carrito.img-carrito(src='images/cart.png' alt='Carrito')
-.selection-container
-  label(for='platform') Seleccionar Plataforma:
-  select#platform(name='platform' onchange='showGamesForCompany()')
-    option(value='xbox') Xbox
-    option(value='psp') PSP
-    option(value='nintendo') Nintendo
-.platform-content
-  h2 Selecciona una plataforma para ver los juegos disponibles.
-  .card-container
-    // Aquí se van a insertar las tarjetas de los juegos
-footer
-  p &copy; 2024 Tienda de Videojuegos
-script(src='Js/script.js')
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Fan-tienda de Videojuegos
+    link(rel='stylesheet' href='/CSS/estilo.css')
+    link(rel='stylesheet' href='/CSS/carrito.css')
+  body
+    header
+      h1 Fan-tienda de Videojuegos
+    nav.navbar
+      a.toggle-button(href='#') Inicio
+      a#toggleButton.toggle-button Usuario
+      #formContainer.form-container.hidden
+        form
+          label(for='userId') ID:
+          input#userId(type='text' name='userId' placeholder='Introduce tu ID' required='')
+          label(for='password') Contrase&ntilde;a:
+          input#password(type='password' name='password' placeholder='Introduce tu contraseña' required='')
+          button.submit-button(type='submit') Iniciar sesi&oacute;n
+        a.forgot-password(href='#') Olvid&eacute; mi contrase&ntilde;a
+        a.forgot-password(href='#') Crear Cuenta
+      img#carrito.img-carrito(src='images/cart.png' alt='Carrito')
+
+    // Sección para seleccionar plataforma
+    .selection-container
+      label(for='platform') Seleccionar Plataforma:
+      select#plataforma(name='platform' onchange='cambiarPlataforma()')
+        option(value="0") Seleccione una plataforma 
+        option(value='1') Xbox
+        option(value='2') PSP
+        option(value='3') Nintendo
+
+    block script
+      script.
+        function cambiarPlataforma() {
+          const plataforma = document.getElementById("plataforma").value;
+          window.location.href = `/juegos/${plataforma}`;
+        }
+
+    // Sección dinámica para mostrar juegos de la plataforma seleccionada
+    .platform-content
+      h2 Juegos disponibles para #{plataforma}
+      .card-container
+        each game in games
+          .card
+            img(src=game.image, alt=game.title)
+            h3= game.title
+            p Precio: $#{game.price}
+            p Stock disponible: #{game.stock}
+            input(type="number" placeholder="Cantidad Vendida" min="1" max=game.stock)
+            button Agregar a carrito
+
+    footer
+      p &copy; 2024 Tienda de Videojuegos
+
+    script(src='/Js/script.js')

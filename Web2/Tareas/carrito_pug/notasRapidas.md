@@ -24,3 +24,20 @@
     footer
       p © 2024 Tienda de Videojuegos
       script(src='Js/script.js')
+
+# Pug juegos
+
+extends index.pug
+
+block content
+  h1 Ventas para #{plataforma}
+  .platform-content
+    .card-container
+      each game in games
+        .card
+          img(src=game.image, alt=game.title)
+          h3= game.title
+          p Precio: $#{game.price}
+          p Stock disponible: #{game.stock}
+          input(type="number" placeholder="Cantidad Vendida" min="1" max=game.stock)
+          button Registrar Venta

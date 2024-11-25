@@ -1,14 +1,14 @@
-import { Router } from "express";
-import { mostrarJuegos } from "../controllers/juegosController.js";
+import express from "express";
+import { obtenerJuegosPorConsola } from "../controllers/juegosController.js"; // Importar el controlador
 
-const router = Router();
+const router = express.Router();
 
-// Ruta principal
+// Ruta principal (Home)
 router.get("/", (req, res) => {
-    res.render("index");
+    res.render("index", { plataforma: "", games: [] }); // Vista principal con plataforma vacía inicialmente
 });
 
-// Ruta para los juegos por plataforma
-router.get("/juegos/:plataforma", mostrarJuegos);
+// Ruta para cargar juegos según la plataforma seleccionada
+router.get("/juegos/:plataforma", obtenerJuegosPorConsola);
 
 export default router;
