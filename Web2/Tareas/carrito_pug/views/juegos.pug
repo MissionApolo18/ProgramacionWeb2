@@ -1,26 +1,22 @@
-doctype html
-html
-  extends index.pug 
+extends index.pug
 
-  block content
-    .selection-container
-      label(for='platform') Seleccionar Plataforma:
-      select#platform(onchange='showPlatformContent()')
-        option(value='xbox') Xbox
-        option(value='psp') PSP
-        option(value='nintendo') Nintendo
+block content
+  .selection-container
+    label(for="platform") Seleccionar Plataforma:
+    select#platform(onchange="window.location.href=`/juegos/${this.value}`")
+      option(value="xbox" selected=(platform === "xbox")) Xbox
+      option(value="psp" selected=(platform === "psp")) PSP
+      option(value="nintendo" selected=(platform === "nintendo")) Nintendo
 
-    // Aquí se cargará dinámicamente el contenido de los videojuegos
-    .platform-content#platform-content
-      h2 Selecciona una plataforma para ver los juegos disponibles.
-
-    // Sección para mostrar los videojuegos según la plataforma seleccionada
-    h2 Comprar Videojuegos para #{platform} 
-    .card-container
-      each game in games
-        .card
-          img(src=`/images/${game.image}` alt=game.title)
-          h3= game.title
-          p Precio: $#{game.price}
-          button Comprar Ahora
-
+  .platform-content
+    if games.length
+      h2 Juegos Disponibles para #{platform}
+      .card-container
+        each game in games
+          .card
+            img(src=`/images/${game.image}` alt=game.title)
+            h3= game.title
+            p Precio: $#{game.price}
+            button Comprar Ahora
+    else
+      h2 No hay juegos disponibles para #{platform}.

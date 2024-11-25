@@ -1,11 +1,14 @@
-import express from 'express';
-import { inicio, getGamesByCompany } from '../controllers/controllers.js'
+import { Router } from "express";
+import { mostrarJuegos } from "../controllers/juegosController.js";
 
-const router = express.Router();
+const router = Router();
 
-router.get('/', inicio);
+// Ruta principal
+router.get("/", (req, res) => {
+    res.render("index");
+});
 
-// Ruta para obtener juegos por compañía
-router.get('/juegos/:company', getGamesByCompany);
+// Ruta para los juegos por plataforma
+router.get("/juegos/:plataforma", mostrarJuegos);
 
 export default router;
